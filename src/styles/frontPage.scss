@@ -11,25 +11,62 @@ main {
     }
 }
 
-nav {
+nav.centernav {
     font-size: 1.5rem;
+    margin-top: 10vh;
     display: grid;
+    position: relative;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 2em;
-    grid-row-gap: 2em;
+    grid-row-gap: 1em;
+    $link-color: rgb(209, 209, 255);
 
     // width: ;
     text-align: center;
+
+    a {
+        color: rgb(209, 209, 255);
+        border: 2px solid transparent;
+        border-radius: 0.6em;
+        padding: 1.8em 1.5em;
+        z-index: 1;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .art {
+    }
+
+    .about {
+        position: relative;
+        bottom: 100%;
+    }
+
+    .projects {
+    }
 
     .work {
         grid-column: 2;
     }
 
-    a {
-        color: rgb(209, 209, 255);
-        &:hover {
-            text-decoration: underline;
+    .linkart {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        img {
+            width: 6em;
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 0.3s ease;
+            &.visible {
+                opacity: 1;
+                z-index: 2;
+            }
         }
     }
 }
