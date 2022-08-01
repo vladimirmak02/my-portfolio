@@ -8,6 +8,7 @@ import darkFlower from '../images/darkflower.png'
 import blurryportrait from '../images/blurryportrait.png'
 import bookface from '../images/bookface.png'
 import paintedbricks from '../images/paintedbricks.png'
+import placeholderImg from '../images/placeholder.png'
 
 const links = ['Art', 'About', 'Projects', 'Work']
 const linkArt = [darkFlower, blurryportrait, bookface, paintedbricks]
@@ -20,6 +21,12 @@ const IndexPage = () => {
             <title>Vlad's Portfolio</title>
             <h1 style={{}}>Vlad's Portfolio</h1>
             <nav className="centernav">
+                <div className="linkart">
+                    <img
+                        src={placeholderImg}
+                        className={artShown === -1 ? 'visible' : ''}
+                    />
+                </div>
                 {linkArt.map((imgsrc, i) => (
                     <div className="linkart">
                         <img
