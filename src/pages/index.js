@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import '../styles/reset.scss'
 import '../styles/frontPage.scss'
 import '../styles/global.scss'
-import { StaticImage } from 'gatsby-plugin-image'
 import darkFlower from '../images/darkflower.png'
 import blurryportrait from '../images/blurryportrait.png'
 import bookface from '../images/bookface.png'
@@ -24,6 +23,7 @@ const IndexPage = () => {
                 <div className="linkart">
                     <img
                         src={placeholderImg}
+                        alt=""
                         className={artShown === -1 ? 'visible' : ''}
                     />
                 </div>
@@ -31,6 +31,7 @@ const IndexPage = () => {
                     <div className="linkart">
                         <img
                             src={imgsrc}
+                            alt=""
                             className={i === artShown ? 'visible' : ''}
                         />
                     </div>
