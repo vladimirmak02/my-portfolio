@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet'
 function WorkPage({ data }) {
     const posts = data.allMdx.edges.map((n) => n.node)
     return (
-        <main>
+        <main className="frontPageMain">
             <h1>Work</h1>
             <Helmet>
                 <title>Vlad's Work</title>
@@ -21,7 +21,7 @@ function WorkPage({ data }) {
 
 export const query = graphql`
     query {
-        allMdx {
+        allMdx(filter: { slug: { regex: "/^work/" } }) {
             edges {
                 node {
                     frontmatter {
