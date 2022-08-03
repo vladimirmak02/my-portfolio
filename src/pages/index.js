@@ -17,7 +17,7 @@ const IndexPage = () => {
     const [artShown, setArtShown] = React.useState(-1)
 
     return (
-        <main style={{}}>
+        <main className="frontPageMain">
             <Helmet>
                 <title>Vlad's Portfolio</title>
                 <meta
