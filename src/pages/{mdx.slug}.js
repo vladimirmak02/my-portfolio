@@ -12,6 +12,7 @@ export default function PageTemplate({ data: { mdx } }) {
     return (
         <main className="mdxDocument">
             <h1>{mdx.frontmatter.title}</h1>
+            <span>{mdx.date}</span>
             <Helmet>
                 <title>{mdx.frontmatter.title}</title>
             </Helmet>
@@ -22,7 +23,7 @@ export default function PageTemplate({ data: { mdx } }) {
                     </MDXRenderer>
                 </MDXProvider>
             </div>
-            <Link to="../">Back</Link>
+            <Link to="../">Go Back</Link>
         </main>
     )
 }
@@ -34,6 +35,7 @@ export const pageQuery = graphql`
             body
             frontmatter {
                 title
+                date(formatString: "Y")
             }
         }
     }

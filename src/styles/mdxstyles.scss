@@ -1,4 +1,9 @@
 .mdxDocument {
+    font-size: 22px;
+    @media only screen and (min-width: 1000px) {
+        position: relative;
+        margin: 1em 20%;
+    }
     h1 {
         font-size: 1.5em;
         font-weight: bolder;
@@ -18,5 +23,24 @@
     h5 {
         font-size: 0.67em;
         font-weight: bolder;
+    }
+    p {
+        margin: 0.3em 0em;
+    }
+    a {
+        color: #6a9bc8;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .content {
+        margin: 0.7em 0em;
+        color: #ddd;
+        position: relative;
+        img,
+        video {
+            max-width: 95%;
+        }
     }
 }
