@@ -3,10 +3,11 @@ import { Link } from 'gatsby'
 import '../styles/reset.scss'
 import '../styles/global.scss'
 import '../styles/about.scss'
+import '../styles/frontPage.scss'
 
 function AboutPage() {
     return (
-        <main className="spreadout">
+        <main className="spreadout frontPageMain">
             <h1>About</h1>
             <div className="centertext">
                 <p>Just a person</p>
