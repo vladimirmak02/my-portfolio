@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import '@google/model-viewer/dist/model-viewer'
+
 import '../styles/reset.scss'
 import '../styles/frontPage.scss'
 import '../styles/global.scss'
@@ -11,6 +11,8 @@ import paintedbricks from '../images/paintedbricks.png'
 import placeholderImg from '../images/placeholder.png'
 import { Helmet } from 'react-helmet'
 
+// await import('@google/model-viewer/dist/model-viewer')
+
 const links = ['Art', 'About', 'Projects', 'Work']
 const linkArt = [darkFlower, blurryportrait, bookface, paintedbricks]
 
@@ -20,6 +22,10 @@ const IndexPage = () => {
     return (
         <main className="frontPageMain">
             <Helmet>
+                <script
+                    type="module"
+                    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
                 <title>Vlad's Portfolio</title>
                 <meta
                     name="description"
