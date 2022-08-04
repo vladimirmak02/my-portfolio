@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
+import '@google/model-viewer/dist/model-viewer'
 import '../styles/reset.scss'
 import '../styles/frontPage.scss'
 import '../styles/global.scss'
@@ -27,23 +28,63 @@ const IndexPage = () => {
                 <html lang="en" />
             </Helmet>
             <h1 style={{}}>Vlad's Portfolio</h1>
+
             <nav className="centernav">
-                <div className="linkart">
-                    <img
-                        src={placeholderImg}
-                        alt=""
-                        className={artShown === -1 ? 'visible' : ''}
-                    />
-                </div>
-                {linkArt.map((imgsrc, i) => (
-                    <div className="linkart" key={links[i]}>
-                        <img
-                            src={imgsrc}
-                            alt=""
-                            className={i === artShown ? 'visible' : ''}
-                        />
+                <div className="linkArtContainer">
+                    <div className="linkart">
+                        <div
+                            className={
+                                'model3d ' + (artShown === -1 ? 'visible' : '')
+                            }>
+                            <model-viewer
+                                bounds="tight"
+                                src="flower.glb"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                auto-rotate
+                                auto-rotate-delay="0"
+                                interaction-prompt="none"
+                                rotation-per-second="300%"
+                                camera-controls
+                                environment-image="sunset.hdr"
+                                shadow-intensity="1"
+                                style={{ backgroundcolor: 'unset' }}>
+                                <div id="lazy-load-poster" slot="poster"></div>
+                            </model-viewer>
+                        </div>
                     </div>
-                ))}
+                    <div className="linkart">
+                        <div
+                            className={
+                                'model3d ' + (artShown !== -1 ? 'visible' : '')
+                            }>
+                            <model-viewer
+                                bounds="tight"
+                                src="monke.glb"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                auto-rotate
+                                auto-rotate-delay="0"
+                                rotation-per-second="300%"
+                                interaction-prompt="none"
+                                camera-controls
+                                environment-image="sunset.hdr"
+                                shadow-intensity="1"
+                                style={{ backgroundcolor: 'unset' }}>
+                                <div id="lazy-load-poster" slot="poster"></div>
+                            </model-viewer>
+                        </div>
+                    </div>
+                    {/* {linkArt.map((imgsrc, i) => (
+                        <div className="linkart" key={links[i]}>
+                            <img
+                                src={imgsrc}
+                                alt=""
+                                className={i === artShown ? 'visible' : ''}
+                            />
+                        </div>
+                    ))} */}
+                </div>
 
                 {links.map((str, i) => (
                     <Link
