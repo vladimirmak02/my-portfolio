@@ -19,83 +19,112 @@ nav.centernav {
     position: relative;
     grid-template-columns: 5em 1fr 5em;
     grid-template-rows: min-content 1fr min-content;
+    grid-template-areas:
+        '. about .'
+        'art linkArt projects'
+        '. work .';
     grid-column-gap: 2em;
     grid-row-gap: 1em;
     $link-color: rgb(209, 209, 255);
 
     @media only screen and (max-width: 768px) {
         margin-top: 0.2em;
-        padding-top: 6em;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
-        grid-row-gap: 0em;
+        grid-template-rows: 1fr repeat(4, auto);
+        grid-row-gap: 1em;
+        grid-template-areas:
+            'linkArt'
+            'about'
+            'work'
+            'art'
+            'projects';
     }
 
-    // width: ;
     text-align: center;
 
-    a {
-        color: #6a9bc8;
-        font-weight: 100;
-        border: 2px solid transparent;
-        position: relative;
+    .navlink {
         align-self: center;
-        justify-self: center;
-        z-index: 1;
-        &:hover {
-            text-decoration: underline;
-        }
-        &::after {
-            content: '';
-            position: absolute;
-            border-radius: 0.5em;
-            width: 100%;
-            top: 100%;
-            left: -0.15em;
-            height: 0em;
-            padding: 0em 0.1em;
-            border: 0.1em solid transparent;
-            transition: border-color 0.5s ease;
-        }
-        &.active {
+        justify-self: start;
+        margin-left: 50%;
+        position: relative;
+        left: -3em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5em;
+        a {
+            position: relative;
+            color: #6a9bc8;
+            font-weight: 100;
+            border: 2px solid transparent;
+            &:hover {
+                text-decoration: underline;
+            }
             &::after {
-                border-color: #ddd;
+                content: '';
+                position: absolute;
+                border-radius: 0.5em;
+                width: 100%;
+                top: 100%;
+                left: -0.15em;
+                height: 0em;
+                padding: 0em 0.1em;
+                border: 0.1em solid transparent;
+                transition: border-color 0.5s ease;
+            }
+            &.active {
+                &::after {
+                    border-color: #ddd;
+                }
+            }
+        }
+
+        .selectArtBtn {
+            visibility: hidden;
+            @media only screen and (max-width: 768px) {
+                visibility: visible;
+            }
+            cursor: pointer;
+            width: 2em;
+            height: 2em;
+            border-radius: 4em;
+            background-color: #333;
+            border: 5px solid #ddd;
+            box-shadow: 0 0 7px 1px #6a9bc8;
+            transition: background-color 0.2s ease;
+            &.active {
+                background-color: #6a9bc8;
             }
         }
     }
 
     .art {
-        grid-column: 1;
-        grid-row: 2;
+        grid-area: art;
     }
 
     .about {
-        grid-column: 2;
-        grid-row: 1;
+        grid-area: about;
         position: relative;
-        // @media only screen and (min-width: 768px) {
-        //     bottom: 100%;
-        // }
     }
 
     .projects {
-        grid-column: 3;
-        grid-row: 2;
+        grid-area: projects;
     }
 
     .work {
-        grid-column: 2;
-        grid-row: 3;
-        @media only screen and (max-width: 768px) {
-            grid-column: auto;
-        }
+        grid-area: work;
     }
 
     .linkArtContainer {
-        width: 15em;
-        height: 12em;
-        grid-column: 2;
-        grid-row: 2;
+        --width: 19em;
+        --height: 16em;
+        @media only screen and (max-width: 768px) {
+            --width: 90vw;
+            --height: 30vh;
+        }
+        width: var(--width);
+        height: var(--height);
+        grid-area: linkArt;
         position: relative;
         .linkart {
             img,
@@ -104,16 +133,18 @@ nav.centernav {
                 opacity: 0;
                 z-index: 0;
                 transition: opacity 0.6s ease;
+                visibility: hidden;
                 &.visible {
                     transition: opacity 1s ease;
                     opacity: 1;
                     z-index: 2;
+                    visibility: visible;
                 }
             }
 
             model-viewer {
-                width: 15em;
-                height: 12em;
+                width: var(--width);
+                height: var(--height);
             }
 
             #lazy-load-poster {

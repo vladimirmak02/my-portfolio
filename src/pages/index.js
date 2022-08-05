@@ -4,17 +4,11 @@ import { Link } from 'gatsby'
 import '../styles/reset.scss'
 import '../styles/frontPage.scss'
 import '../styles/global.scss'
-import darkFlower from '../images/darkflower.png'
-import blurryportrait from '../images/blurryportrait.png'
-import bookface from '../images/bookface.png'
-import paintedbricks from '../images/paintedbricks.png'
-import placeholderImg from '../images/placeholder.png'
 import { Helmet } from 'react-helmet'
 
 // await import('@google/model-viewer/dist/model-viewer')
 
 const links = ['Art', 'About', 'Projects', 'Work']
-const linkArt = [darkFlower, blurryportrait, bookface, paintedbricks]
 
 const IndexPage = () => {
     const [artShown, setArtShown] = React.useState(0)
@@ -125,30 +119,29 @@ const IndexPage = () => {
                             </model-viewer>
                         </div>
                     </div>
-                    {/* {linkArt.map((imgsrc, i) => (
-                        <div className="linkart" key={links[i]}>
-                            <img
-                                src={imgsrc}
-                                alt=""
-                                className={i === artShown ? 'visible' : ''}
-                            />
-                        </div>
-                    ))} */}
                 </div>
 
                 {links.map((str, i) => (
-                    <Link
-                        to={`/${str.toLowerCase()}`}
-                        className={
-                            str.toLowerCase() +
-                            (artShown === i ? ' active' : '')
-                        }
-                        onMouseOver={(event) => {
-                            setArtShown(i)
-                        }}
-                        key={str}>
-                        {str}
-                    </Link>
+                    <div className={str.toLowerCase() + ' navlink'}>
+                        <button
+                            className={
+                                'selectArtBtn ' +
+                                (artShown === i ? ' active' : '')
+                            }
+                            title={`Show 3D model for ${str}`}
+                            onClick={(e) => {
+                                setArtShown(i)
+                            }}></button>
+                        <Link
+                            to={`/${str.toLowerCase()}`}
+                            className={artShown === i ? ' active' : ''}
+                            onMouseOver={(event) => {
+                                setArtShown(i)
+                            }}
+                            key={str}>
+                            {str}
+                        </Link>
+                    </div>
                 ))}
             </nav>
         </main>
