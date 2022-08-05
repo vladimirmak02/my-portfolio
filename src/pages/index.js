@@ -17,7 +17,7 @@ const links = ['Art', 'About', 'Projects', 'Work']
 const linkArt = [darkFlower, blurryportrait, bookface, paintedbricks]
 
 const IndexPage = () => {
-    const [artShown, setArtShown] = React.useState(-1)
+    const [artShown, setArtShown] = React.useState(0)
 
     return (
         <main className="frontPageMain">
@@ -40,7 +40,7 @@ const IndexPage = () => {
                     <div className="linkart">
                         <div
                             className={
-                                'model3d ' + (artShown === -1 ? 'visible' : '')
+                                'model3d ' + (artShown === 0 ? 'visible' : '')
                             }>
                             <model-viewer
                                 bounds="tight"
@@ -62,11 +62,55 @@ const IndexPage = () => {
                     <div className="linkart">
                         <div
                             className={
-                                'model3d ' + (artShown !== -1 ? 'visible' : '')
+                                'model3d ' + (artShown === 1 ? 'visible' : '')
                             }>
                             <model-viewer
                                 bounds="tight"
                                 src="monke.glb"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                auto-rotate
+                                auto-rotate-delay="0"
+                                rotation-per-second="300%"
+                                interaction-prompt="none"
+                                camera-controls
+                                environment-image="sunset.hdr"
+                                shadow-intensity="1"
+                                style={{ backgroundcolor: 'unset' }}>
+                                <div id="lazy-load-poster" slot="poster"></div>
+                            </model-viewer>
+                        </div>
+                    </div>
+                    <div className="linkart">
+                        <div
+                            className={
+                                'model3d ' + (artShown === 2 ? 'visible' : '')
+                            }>
+                            <model-viewer
+                                bounds="tight"
+                                src="donut.glb"
+                                ar
+                                ar-modes="webxr scene-viewer quick-look"
+                                auto-rotate
+                                auto-rotate-delay="0"
+                                rotation-per-second="300%"
+                                interaction-prompt="none"
+                                camera-controls
+                                environment-image="sunset.hdr"
+                                shadow-intensity="1"
+                                style={{ backgroundcolor: 'unset' }}>
+                                <div id="lazy-load-poster" slot="poster"></div>
+                            </model-viewer>
+                        </div>
+                    </div>
+                    <div className="linkart">
+                        <div
+                            className={
+                                'model3d ' + (artShown === 3 ? 'visible' : '')
+                            }>
+                            <model-viewer
+                                bounds="tight"
+                                src="blob.glb"
                                 ar
                                 ar-modes="webxr scene-viewer quick-look"
                                 auto-rotate
@@ -95,12 +139,12 @@ const IndexPage = () => {
                 {links.map((str, i) => (
                     <Link
                         to={`/${str.toLowerCase()}`}
-                        className={str.toLowerCase()}
+                        className={
+                            str.toLowerCase() +
+                            (artShown === i ? ' active' : '')
+                        }
                         onMouseOver={(event) => {
                             setArtShown(i)
-                        }}
-                        onMouseOut={(event) => {
-                            setArtShown(-1)
                         }}
                         key={str}>
                         {str}
