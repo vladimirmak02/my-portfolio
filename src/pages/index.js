@@ -104,7 +104,7 @@ const IndexPage = () => {
                             }>
                             <model-viewer
                                 bounds="tight"
-                                src="blob.glb"
+                                src="laptop.glb"
                                 ar
                                 ar-modes="webxr scene-viewer quick-look"
                                 auto-rotate
