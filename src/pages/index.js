@@ -60,7 +60,7 @@ const IndexPage = () => {
                             }>
                             <model-viewer
                                 bounds="tight"
-                                src="monke.glb"
+                                src="peacefingers.glb"
                                 ar
                                 ar-modes="webxr scene-viewer quick-look"
                                 auto-rotate
