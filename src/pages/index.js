@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet'
 
 // await import('@google/model-viewer/dist/model-viewer')
 
-const links = ['Art', 'About', 'Projects', 'Work']
+const links = ['Art', 'Work', 'Projects', 'About']
 
 const IndexPage = () => {
     const [artShown, setArtShown] = React.useState(0)
