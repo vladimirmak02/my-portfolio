@@ -20,9 +20,9 @@ nav.centernav {
     grid-template-columns: 5em 1fr 5em;
     grid-template-rows: min-content 1fr min-content;
     grid-template-areas:
-        '. about .'
+        '. work .'
         'art linkArt projects'
-        '. work .';
+        '. about .';
     grid-column-gap: 2em;
     grid-row-gap: 1em;
     $link-color: rgb(209, 209, 255);
@@ -34,8 +34,8 @@ nav.centernav {
         grid-row-gap: 1em;
         grid-template-areas:
             'linkArt'
-            'about'
             'work'
+            'about'
             'art'
             'projects';
     }
