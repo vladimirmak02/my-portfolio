@@ -21,7 +21,10 @@ function ArtPage({ data }) {
 
 export const query = graphql`
     query {
-        allMdx(filter: { slug: { regex: "/^art/" } }) {
+        allMdx(
+            filter: { slug: { regex: "/^art/" } }
+            sort: { fields: frontmatter___date, order: DESC }
+        ) {
             edges {
                 node {
                     frontmatter {

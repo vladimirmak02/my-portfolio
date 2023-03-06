@@ -21,7 +21,10 @@ function WorkPage({ data }) {
 
 export const query = graphql`
     query {
-        allMdx(filter: { slug: { regex: "/^work/" } }) {
+        allMdx(
+            filter: { slug: { regex: "/^work/" } }
+            sort: { fields: frontmatter___date, order: DESC }
+        ) {
             edges {
                 node {
                     frontmatter {

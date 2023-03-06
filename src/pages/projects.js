@@ -22,7 +22,10 @@ function ProjectsPage({ data }) {
 //TODO: add filter to query
 export const query = graphql`
     query {
-        allMdx(filter: { slug: { regex: "/^projects/" } }) {
+        allMdx(
+            filter: { slug: { regex: "/^projects/" } }
+            sort: { fields: frontmatter___date, order: DESC }
+        ) {
             edges {
                 node {
                     frontmatter {
